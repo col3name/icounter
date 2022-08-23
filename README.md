@@ -1,17 +1,21 @@
 # Ip address counter
+Console application for count unique ip address on file. File handled parallel using hyperLogLog.
+Optimized only for ssd, on hdd need use `-n 1` parameter.
 
-[File](https://ecwid-vgv-storage.s3.eu-central-1.amazonaws.com/ip_addresses.zip]) size ~ 120gb
+[Download testing file](https://ecwid-vgv-storage.s3.eu-central-1.amazonaws.com/ip_addresses.zip]). Packed Size ~ 12gb, unpacked ~ 120gb
 
-## Windows 10, amd ryzen 5 1600 (6 cores, 12 Threads, 3.4 GHz), sata ssd (read 500 mbit/s), go 1.19
+## Windows 10 amd ryzen 5 1600 (6 cores, 12 Threads, 3.4 GHz), sata ssd (read 220 mbit/s*), go 1.19 
 
-| Count         |  Average time  | File Size      | Ram       | Unique            |
-|:------------- |----------------|:---------------|:----------|:------------------|
-| 80_000        |   **62    ms** |  1.28 mb       |  30 mb    |  -                |
-| 800_000       |   **180   ms** |  12.8 mb       |  30 mb    |  -                |
-| 8_000_000     |   **1.3   s**  |  128  mb       |  30 mb    |  -                |
-| 80_000_000    |   **13    s**  |  1.28 gb       |  30 mb    |  -                |
-| 800_000_000   |   **130   s**  |  12.8 gb       |  40 mb    |  -                |
-| 7_956_984_159 |   **20m20 s**  |  120  gb       |  60 mb    |  1_120_557_388    |
+*on nvme m2 ssd not enough space
+
+| Count         |  Average time  | File Size      | Ram        | Unique            |
+|:------------- |----------------|:---------------|:-----------|:------------------|
+| 80_000        |   **10   ms**  |  1.28 mb       |  9.5 mb    |  -                |
+| 800_000       |   **50   ms**  |  12.8 mb       |  9.5 mb    |  -                |
+| 8_000_000     |   **340  ms**  |  128  mb       |  9.5 mb    |  -                |
+| 80_000_000    |   **3.4  s**   |  1.28 gb       |  9.5 mb    |  -                |
+| 800_000_000   |   **34   s**   |  12.8 gb       |  9.5 mb    |  -                |
+| 7_956_984_159 |   **8m15 s**   |  120  gb       |  9.5 mb    |  1_122_438_962    |
 
 ## Build
 ### Build for macos for apple silicon
@@ -26,3 +30,10 @@
 
 ### Lint 
 `make lint`
+
+### Usage
+`unique -f path -n countParallelTask`
+
+### how optimize
+- faster processor
+- faster ssd
