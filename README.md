@@ -1,6 +1,9 @@
 # Ip address counter
+
 Console application for count unique ip address on file. File handled parallel using hyperLogLog.
 Optimized only for ssd, on hdd need use `-n 1` parameter.
+
+Time complexity O(1)
 
 [Download testing file](https://ecwid-vgv-storage.s3.eu-central-1.amazonaws.com/ip_addresses.zip]). Packed Size ~ 12gb, unpacked ~ 120gb
 
