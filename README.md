@@ -34,6 +34,16 @@ Optimized only for ssd, on hdd need use `-n 1` parameter.
 ### Usage
 `unique -f path -n countParallelTask`
 
-### how optimize
-- faster processor
+### How optimize
 - faster ssd
+- faster processor
+
+### Format of the file with ip addresses
+
+```
+145.67.23.4
+8.34.5.23
+89.54.3.124
+89.54.3.124
+3.45.71.5
+```
