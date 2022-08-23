@@ -15,8 +15,8 @@ func main() {
 
 	fmt.Println(*fileName)
 	start := time.Now()
-	counterHLL := service.NewUniqueCounterHLL(*fileName, *countParallelTask)
-	count, err := counterHLL.Count()
+	filter := service.NewUniqueCounterHLL(*fileName, *countParallelTask)
+	count, err := filter.Count()
 	elapsed := time.Since(start).String()
 	if err != nil {
 		fmt.Println(elapsed, err)

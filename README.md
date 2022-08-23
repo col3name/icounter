@@ -6,6 +6,9 @@ Optimized only for ssd, on hdd need use `-n 1` parameter.
 Time complexity O(1)
 
 [Download testing file](https://ecwid-vgv-storage.s3.eu-central-1.amazonaws.com/ip_addresses.zip]). Packed Size ~ 12gb, unpacked ~ 120gb
+## Variants
+- HyperLogLog
+- Count every time the bloom filter doesn't contain IP, but its difficult to parallelize
 
 ## Windows 10 amd ryzen 5 1600 (6 cores, 12 Threads, 3.4 GHz), sata ssd (read 220 mbit/s*), go 1.19 
 
