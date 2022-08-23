@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	fileName := flag.String("f", "f", "input file")
+	fileName := flag.String("f", "d:/ip_addresses/ip_addresses", "input file")
 	flag.Parse()
 
 	file, err := os.Open(*fileName)
