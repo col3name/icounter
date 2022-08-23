@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fileName := flag.String("f", "C:\\Users\\mikha\\go\\src\\github.com\\col3name\\ip-unique-addr\\ip_addresses_out", "input file1")
+	fileName := flag.String("f", "ip_addresses_out", "input file1")
 	countParallelTask := flag.Int("n", runtime.NumCPU(), "count parallel reader")
 	flag.Parse()
 
