@@ -2,3 +2,4 @@
 bin
 *out*
 data
+cmd/file/
