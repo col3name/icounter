@@ -1,4 +1,5 @@
-# Uniaud ip address counter
+# Unique ip address counter
+![CI passing](https://github.com/col3name/icounter/actions/workflows/prod.yml/badge.svg)
 
 Console application for count unique ip address on big file. File handled parallel using hyperLogLog.
 Optimized only for ssd, on hdd need use `-n 1` parameter.
