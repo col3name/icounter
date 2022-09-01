@@ -13,7 +13,7 @@ func main() {
 	countParallelTask := flag.Int("n", runtime.NumCPU(), "count parallel reader")
 	flag.Parse()
 
-	fmt.Println(*fileName)
+	fmt.Println("Started", time.Now(), *fileName)
 	start := time.Now()
 	filter := service.NewUniqueCounterHLL(*fileName, *countParallelTask)
 	count, err := filter.Count()
@@ -22,5 +22,7 @@ func main() {
 		fmt.Println(elapsed, err)
 		return
 	}
-	fmt.Println("Time taken", elapsed, "\nUnique", count)
+	fmt.Println("Ended", time.Now())
+	fmt.Println("Time taken", elapsed)
+	fmt.Println("Unique", count)
 }
