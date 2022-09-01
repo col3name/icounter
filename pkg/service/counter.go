@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/clarkduvall/hyperloglog"
 	"github.com/col3name/ip-unique-addr/pkg/hash"
+	"io"
 	"os"
 	"sync"
 )
@@ -14,10 +15,11 @@ type CounterService interface {
 	Count() (uint64, error)
 }
 
+var ErrorInvalidValue = errors.New("errorInvalidValue")
+
 type uniqueCounterHyperLogLog struct {
 	filePath          string
 	countParallelTask int
-	hyperloglog       hyperloglog.HyperLogLog
 }
 
 func NewUniqueCounterHLL(filepath string, countParallelTask int) *uniqueCounterHyperLogLog {
@@ -26,13 +28,15 @@ func NewUniqueCounterHLL(filepath string, countParallelTask int) *uniqueCounterH
 
 func (c *uniqueCounterHyperLogLog) CountInFile(index int, partSize int64) (*os.File, *hyperloglog.HyperLogLog, error) {
 	if index < 0 {
-		return nil, nil, errors.New("invalid index")
+		return nil, nil, ErrorInvalidValue
 	}
+
 	file, err := os.Open(c.filePath)
 	if err != nil {
 		return nil, nil, err
 	}
-	_, err = file.Seek(partSize*int64(index), os.SEEK_CUR)
+
+	_, err = file.Seek(partSize*int64(index), io.SeekCurrent)
 	if err != nil {
 		return nil, nil, err
 	}
