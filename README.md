@@ -1,6 +1,6 @@
-# Ip address counter
+# Uniaud ip address counter
 
-Console application for count unique ip address on file. File handled parallel using hyperLogLog.
+Console application for count unique ip address on big file. File handled parallel using hyperLogLog.
 Optimized only for ssd, on hdd need use `-n 1` parameter.
 
 Time complexity O(1)
